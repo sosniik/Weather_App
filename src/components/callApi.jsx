@@ -35,7 +35,7 @@ const CallApi = () => {
         let longitude = GPSCoordinates.split(",")[1].trim()
         const data = await getDataWeather(latitude, longitude);
         setWeather(data)
-        let checkArray = favorites.find(e => e == information) !== undefined ? true : false
+        let checkArray = favorites.find(e => e === information) !== undefined ? true : false
         setIsFavorite(checkArray)
         setCallApi(false)
     }
@@ -58,7 +58,7 @@ const CallApi = () => {
                 getApi()
             }
             if (callFavorite) {
-                if (favorites.find(el => el == information)) {
+                if (favorites.find(el => el === information)) {
                     setFavorites(favorites.filter(e => e !== information))
                 } else {
                     setFavorites([...favorites, information])
