@@ -1,0 +1,22 @@
+.Day{
+    border:solid;
+    box-shadow: 10px 5px 5px black;
+    background-color: #78D2EC ;
+    padding: 5px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+}
+
+.centerDay{
+    text-align: center;
+    border :solid;
+}
+
+.Day:hover {
+    background-color:rgba(68, 65, 65, 0.103);
+}
+
+.tempMin{
+    font-weight: bolder;
+}
+
