@@ -5,42 +5,41 @@ import getDataWeather from "./getDataWeather";
 import Day from "./Day";
 import {timeStamps} from "./timeStamps";
 
-export default function Favorite(){
-    const [city,setCity] = useState([])
+export default function Favorite() {
+    const [city, setCity] = useState([])
     const [dataApi, setDataApi] = useState(null)
 
-    async function getWeather(GPSCoordinate){
+    async function getWeather(GPSCoordinate) {
         let latitude = GPSCoordinate.split(",")[0].trim()
         let longitude = GPSCoordinate.split(",")[1].trim()
-        let data = await getDataWeather(latitude,longitude)
+        let data = await getDataWeather(latitude, longitude)
         setDataApi(data)
     }
 
-    function deleteWeather(entityToDelete,index){
+    function deleteWeather(entityToDelete, index) {
         const newCity = [...city]
-        newCity.splice(index,1)
+        newCity.splice(index, 1)
         setCity(newCity)
-        localStorage.setItem("City",JSON.stringify(newCity))
+        localStorage.setItem("City", JSON.stringify(newCity))
     }
 
-    useEffect(async ()=>{
-        setCity(getLocalStorage)
-    },[]
+    useEffect(async () => {
+            setCity(getLocalStorage)
+        }, []
     )
 
 
-    const listCity = city.map((city,index)=>
+    const listCity = city.map((city, index) =>
         <ul>
-            <button onClick={()=> getWeather(city[1])}>{city[0]}</button>
-            <button onClick={()=> deleteWeather(city,index)}>Delete</button>
+            <button onClick={() => getWeather(city[1])}>{city[0]}</button>
+            <button onClick={() => deleteWeather(city, index)}>Delete</button>
         </ul>
-
     )
 
-    if(!dataApi){
+    if (!dataApi) {
         return <div><Link to="/">Go to Home</Link>{listCity}</div>
-    } else{
-        return(
+    } else {
+        return (
             <div>
                 <div>
                     <div className="app">

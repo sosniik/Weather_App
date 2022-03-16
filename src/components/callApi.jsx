@@ -71,7 +71,7 @@ const CallApi = () => {
         [callApi, callFavorite])
 
     if (!weather) {
-        return <p></p>
+        return <div></div>
     } else {
         return (
             <div>
