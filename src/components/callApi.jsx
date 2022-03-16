@@ -35,23 +35,19 @@ const CallApi = () => {
         let longitude = GPSCoordinates.split(",")[1].trim()
         const data = await getDataWeather(latitude, longitude);
         setWeather(data)
-        console.log("fs", information)
-        let checkArray = favorites.find(e => e == information) != undefined ? true : false
+        let checkArray = favorites.find(e => e == information) !== undefined ? true : false
         setIsFavorite(checkArray)
-        console.log(checkArray)
-        console.log(favorites.find(e => e == information))
         setCallApi(false)
     }
 
     useEffect(async () => {
             if (sync) {
-                console.log('tsst ', sync)
                 await AsyncLocalStorage.setItem("City", JSON.stringify(favorites))
                 setSync(false)
             }
             if (init) {
                 const items = await AsyncLocalStorage.getItem('City')
-                if (items != undefined) {
+                if (items !== undefined) {
                     const itemsParsed = await JSON.parse(items)
                     await setFavorites(itemsParsed)
                 }

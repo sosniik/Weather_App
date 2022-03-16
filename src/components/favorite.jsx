@@ -14,12 +14,9 @@ export default function Favorite(){
         let longitude = GPSCoordinate.split(",")[1].trim()
         let data = await getDataWeather(latitude,longitude)
         setDataApi(data)
-        console.log(data)
-        // let data = await getDataWeather(city)
     }
 
     function deleteWeather(entityToDelete,index){
-        console.log("enity",entityToDelete)
         const newCity = [...city]
         newCity.splice(index,1)
         setCity(newCity)
@@ -31,7 +28,6 @@ export default function Favorite(){
     },[]
     )
 
-    console.log("efef",city)
 
     const listCity = city.map((city,index)=>
         <ul>
