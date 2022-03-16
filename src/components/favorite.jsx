@@ -30,14 +30,17 @@ export default function Favorite() {
 
 
     const listCity = city.map((city, index) =>
-        <ul>
+        <ul key={city[0]}>
             <button onClick={() => getWeather(city[1])}>{city[0]}</button>
             <button onClick={() => deleteWeather(city, index)}>Delete</button>
         </ul>
     )
 
     if (!dataApi) {
-        return <div><Link to="/">Go to Home</Link>{listCity}</div>
+        return <div>
+            <Link to="/">Go to Home</Link>
+            {listCity}
+        </div>
     } else {
         return (
             <div>
